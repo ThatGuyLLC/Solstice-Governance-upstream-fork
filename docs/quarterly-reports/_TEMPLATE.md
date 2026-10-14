@@ -89,8 +89,6 @@ Printed here because `MIN_LOT(Q)` is derived off-chain and is stored neither on-
 
 ### 2.7 Pipeline and sales commentary
 
-Standard public-company style disclosure.
-
 | Field | Value |
 | :-- | :-- |
 | New pipeline generated this quarter | *[enter detail]* |
