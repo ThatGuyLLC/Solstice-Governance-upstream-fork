@@ -18,6 +18,8 @@ Every quarter, each Orchestrator files a report using the template in [§4.2](04
 | :-- | :-- | :-- | :-- | :-- | :-- |
 | — | *none yet* | — | — | — |  — |
 
+**CID.** The CID is the content identifier of the exact bytes of the merged report file. `TODO(owners):` the hashing tool and the pinning provider. Until both are named, leave the cell blank. The merged file in this repository is the record. The quarter's reporting issue is the [quarterly report template](../.github/ISSUE_TEMPLATE/quarterly-report---issue.md).
+
 ---
 
 ← Previous: [4. Quarterly Review and Runbook](04-quarterly-review-and-runbook.md) · [Back to README](../README.md) · Next: [6. Program Change Log](06-changelog.md) →

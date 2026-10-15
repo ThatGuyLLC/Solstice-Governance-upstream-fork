@@ -1,6 +1,6 @@
 # Quarterly Report — <Orchestrator> — <YYYY-Qn>
 
-> Copy this file to `<YYYY-Qn>-<orchestrator>.md` in this `quarterly-reports/` folder, fill it in, and open a pull request. Filing rules: [§4.1–4.3, Quarterly Review and Runbook](../04-quarterly-review-and-runbook.md#41-community-reporting-and-disclosure). Quarterly cycle in the FIP: [FIP-0118 §2.2](https://github.com/filecoin-project/FIPs/blob/master/FIPS/fip-0118.md#22-quarterly-cycle).
+> Copy this file to `<YYYY-Qn>-<orchestrator>.md` in this `quarterly-reports/` folder, fill it in, and open a pull request. Filing rules: [§4.1–4.3, Quarterly Review and Runbook](../04-quarterly-review-and-runbook.md#41-community-reporting-and-disclosure). Quarterly cycle in the FIP: [FIP-0118 §2.2 at `23b42964890590a49c9cbc6e19a7e9e361d1f8a0`](https://github.com/filecoin-project/FIPs/blob/23b42964890590a49c9cbc6e19a7e9e361d1f8a0/FIPS/fip-0118.md#22-quarterly-cycle). Latest, not used for quotations: [FIP-0118 on `master`](https://github.com/filecoin-project/FIPs/blob/master/FIPS/fip-0118.md#22-quarterly-cycle).
 >
 > Fields marked *(from indexer)* are produced by the versioned reference indexer.
 
@@ -127,5 +127,11 @@ Amounts below should reconcile to the §1.1 figure (claimed or accrued). “Use�
 | :-- | :-- |
 | High-level plan / focus areas | *[enter detail]* |
 | Anticipated changes to strategy, spend, or team | *[enter detail]* |
+
+## 6. Attestation (proposed)
+
+`TODO(owners): approve` before this section is required. It is not a FIP requirement.
+
+The Orchestrator attests that the statements in this report are not materially false or misleading. Signature by `orch` (EIP-1271 if `orch` is a contract): *[leave blank until owners approve]*
 
 <free text>

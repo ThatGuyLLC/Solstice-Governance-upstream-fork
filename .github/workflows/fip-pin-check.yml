@@ -1,0 +1,32 @@
+# Compares FIP-0118 on FIPs master with the quotation pin.
+# A difference fails this check. The workflow does not open an issue or a pull request.
+# TODO(owners): name an owner for this check.
+name: fip-pin-check
+
+on:
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 12 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  diff:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Diff FIP-0118 against the quotation pin
+        run: |
+          set -eu
+          pin=23b42964890590a49c9cbc6e19a7e9e361d1f8a0
+          curl -fsSL "https://raw.githubusercontent.com/filecoin-project/FIPs/${pin}/FIPS/fip-0118.md" -o /tmp/pinned.md
+          curl -fsSL "https://raw.githubusercontent.com/filecoin-project/FIPs/master/FIPS/fip-0118.md" -o /tmp/latest.md
+          if ! cmp -s /tmp/pinned.md /tmp/latest.md; then
+            echo "FIP-0118 on master differs from pin ${pin}."
+            echo "Update quotations in the same pull request that follows the change."
+            echo "This check does not open an issue or a pull request."
+            diff -u /tmp/pinned.md /tmp/latest.md | head -n 80 || true
+            exit 1
+          fi
+          echo "FIP-0118 on master matches pin ${pin}."

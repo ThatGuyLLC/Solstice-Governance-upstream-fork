@@ -16,5 +16,6 @@ assignees: ''
 - **Summary:** <what is being filed or requested>
 
 - **Links:** <report file under docs/quarterly-reports/, transaction hashes, supporting evidence>
+- **ReplaceWallet signature (if that action):** `TODO(owners): confirm` a message signed by `orch` (EIP-1271 if `orch` is a contract) naming the old wallet, the new wallet, and the chain id.
 - **Requested Deadline:** <filing or response deadline>
 - **SRA action required:** none | <which call, and by when>

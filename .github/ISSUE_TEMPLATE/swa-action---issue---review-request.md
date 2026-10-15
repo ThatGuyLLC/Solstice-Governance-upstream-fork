@@ -17,6 +17,7 @@ assignees: ''
 - **FIP:** <number, link, and commit. Required for every discretionary SWA write.>
 - **Calldata:** <canonical calldata both Safes copy>
 - **Expected taskId:** <keccak256(msg.data)>
+- **Independent decode (proposed):** `TODO(owners): approve`. Each Safe posts the decoded function and arguments and the `taskId` it computed, and signs only if both match. Lock the issue after the first approval.
 - **Dry-run result:** pending | success | revert — <reason>
 - **Effective epoch:** <epoch, and the paired epoch when the write is half of a w2 / steps pair>
 - **Runbook pin (upgrades only):** <solstice commit of docs/UPGRADE.md>

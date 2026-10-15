@@ -8,7 +8,7 @@
 
 ## 6.1 How changes are classified
 
-Per [FIP-0118](https://github.com/filecoin-project/FIPs/blob/master/FIPS/fip-0118.md) §4.4, there are three tiers of change; every entry below is tagged with one:
+Per [FIP-0118 at `23b42964890590a49c9cbc6e19a7e9e361d1f8a0`](https://github.com/filecoin-project/FIPs/blob/23b42964890590a49c9cbc6e19a7e9e361d1f8a0/FIPS/fip-0118.md) §4.4, there are three tiers of change; every entry below is tagged with one. Latest text, not used for quotations: [FIP-0118 on `master`](https://github.com/filecoin-project/FIPs/blob/master/FIPS/fip-0118.md).
 
 | Type | What it covers | How it is enacted |
 | :-- | :-- | :-- |
@@ -24,10 +24,32 @@ Each entry should link: (a) the **community issue / discussion** that raised the
 
 | Date | Change | Type | Community issue / discussion | FIP | PR / commit | Status |
 | :-- | :-- | :-- | :-- | :-- | :-- | :-- |
-| 2026-10-14 | Procedures and FIP quotations aligned with FIP-0118 at `23b4296` (back-cover, `CorrectVolume` publication, `ReassignBinding` / `CancelBinding`, quarterly recomputation, chain id). See the dated subsection. | Repository (PR) | No GitHub issue. Review dated 2026-10-14. | n/a. Quotations are from [FIP-0118 @ `23b4296`](https://github.com/filecoin-project/FIPs/blob/23b42964890590a49c9cbc6e19a7e9e361d1f8a0/FIPS/fip-0118.md). | `review-fixes-fip0118` | Accepted |
+| 2026-10-15 | Round-3 governance review fixes on `review-r3-fixes`. Owner decisions are marked `TODO(owners)` and collected in [Open decisions](07-open-decisions.md). See the dated subsection. | Repository (PR) | No GitHub issue. Review dated 2026-10-15. | n/a. Quotations are from [FIP-0118 @ `23b4296`](https://github.com/filecoin-project/FIPs/blob/23b42964890590a49c9cbc6e19a7e9e361d1f8a0/FIPS/fip-0118.md). | `review-r3-fixes` (pull request not opened with this branch) | Proposed |
+| 2026-10-14 | Twelve direct commits on `main` after PR #18, `40112ed` through `aebdaf7`. They removed owner flags without a pull request and without a Change Log entry at the time. See the dated subsection. | Repository (PR) | No GitHub issue. | n/a | `40112eddedd7448432cc99df1801ddd4887e0016` .. `aebdaf7e18d5cc39955e53a2ef587bf30685dabc` | Accepted on `main` without a pull request |
+| 2026-10-14 | Procedures and FIP quotations aligned with FIP-0118 at `23b4296` (back-cover, `CorrectVolume` publication, `ReassignBinding` / `CancelBinding`, quarterly recomputation, chain id). See the dated subsection. | Repository (PR) | No GitHub issue. Review dated 2026-10-14. | n/a. Quotations are from [FIP-0118 @ `23b4296`](https://github.com/filecoin-project/FIPs/blob/23b42964890590a49c9cbc6e19a7e9e361d1f8a0/FIPS/fip-0118.md). | [#18](https://github.com/filecoin-project/Solstice-Governance/pull/18), merge `6b68569b90b4d228de5c1bc1cdbe5ed109f50e10` | Accepted |
 | 2026-10-09 | Upgrade-runbook link; one Safe-replacement section (§2.5.3) for both tiers. | Repository (PR) | n/a | n/a | [#17](https://github.com/filecoin-project/Solstice-Governance/pull/17) `142926f3ff38ed10166725a95a1a73500c35af3a` | Accepted |
-| 2026 (pending) | Establishment of the Solstice program and this governance repository; deprecation of Filecoin Plus. | FIP + Network upgrade | [FIP-0118 discussion](https://github.com/filecoin-project/FIPs/discussions/1249) | [FIP-0118](https://github.com/filecoin-project/FIPs/blob/master/FIPS/fip-0118.md) | Initial repository | Draft |
+| 2026 (pending) | Establishment of the Solstice program and this governance repository; deprecation of Filecoin Plus. | FIP + Network upgrade | [FIP-0118 discussion](https://github.com/filecoin-project/FIPs/discussions/1249) | [FIP-0118 at `23b4296`](https://github.com/filecoin-project/FIPs/blob/23b42964890590a49c9cbc6e19a7e9e361d1f8a0/FIPS/fip-0118.md) (status Accepted). Latest, not the pin: [FIP-0118 on `master`](https://github.com/filecoin-project/FIPs/blob/master/FIPS/fip-0118.md). | Initial repository | FIP Accepted; activation parameters, participants, the initial Orchestrator, and Safe addresses are still open in the FIP TODO. This repository does not amend the FIP. |
 
+
+## 2026-10-15 — Round-3 review fixes (proposed)
+
+- **Type:** Repository (PR)
+- **Summary:** Applies the concrete repository edits from the 2026-10-15 governance review. New duties are proposed text with `TODO(owners): approve` or `TODO(owners): confirm`. They are not rules in force. Wash trading and self-dealing, and a materially false or misleading report, are repository policy (the second is proposed). They are not stated as FIP requirements. No contract code and no deployment is changed. Branch protection, FIP amendments, and legal conclusions are not in this change.
+- **Community issue / discussion:** No GitHub issue. Review dated 2026-10-15.
+- **FIP:** n/a. No FIP text is amended.
+- **PR / commit:** branch `review-r3-fixes`. A pull request was not opened with this branch.
+- **Affected sections:** README, §2, §3, §4, §5, templates, this log, Open decisions, activation checklist, storage-provider FAQ
+- **Status:** Proposed
+
+## 2026-10-14 — Direct commits on main after PR #18
+
+- **Type:** Repository (PR)
+- **Summary:** After [#18](https://github.com/filecoin-project/Solstice-Governance/pull/18) merged as `6b68569b90b4d228de5c1bc1cdbe5ed109f50e10`, twelve commits titled "Update <file>" were pushed to `main` by Amin-Foundation with no pull request and, at the time, no Change Log row. Range: `40112eddedd7448432cc99df1801ddd4887e0016` .. `aebdaf7e18d5cc39955e53a2ef587bf30685dabc`. The commits are `40112eddedd7448432cc99df1801ddd4887e0016`, `e55499c0a783812e0ad935e7970e9747725cf8a7`, `d1470514e9552343b8617c0bdcb45107dcb7a363`, `b1a33fb7fbfe6288b732dcfd025300306cc490c1`, `0b8533c7903fbe336f935fb79bd57768e79f8352`, `17673b9a8906d25429099875a7f542b9613b3662`, `423e3208bc5949cbd52b20dd72136413221cb047`, `eab9ec27321a000263a88699485a0c9f1dbc8761`, `afa0db843c8e5946fc95b54c54af14a90c41fc5a`, `1cc1fe0f5c5363572534e46ce53f36824f8766dc`, `b3bc880c4d5021de836559220be4329af33739c6`, `aebdaf7e18d5cc39955e53a2ef587bf30685dabc`. They edited README, §2, §3, §4, and this log, and removed `TODO(owners)` markers without recording the decisions. The 2026-10-14 procedure entry below cited branch `review-fixes-fip0118` and did not cite PR #18. This entry records the commits. It does not restore branch protection. That is a GitHub setting.
+- **Community issue / discussion:** No GitHub issue.
+- **FIP:** n/a
+- **PR / commit:** none. Parent merge is [#18](https://github.com/filecoin-project/Solstice-Governance/pull/18) `6b68569b90b4d228de5c1bc1cdbe5ed109f50e10`.
+- **Affected sections:** README, §2, §3, §4, this log
+- **Status:** Accepted on `main` without a pull request
 
 ## 2026-10-14 — FIP-0118 procedure and quotation fixes
 
@@ -36,7 +58,7 @@ Each entry should link: (a) the **community issue / discussion** that raised the
   
 - **Community issue / discussion:** No GitHub issue. Review dated 2026-10-14.
 - **FIP:** n/a. No FIP text is amended.
-- **PR / commit:** branch `review-fixes-fip0118`
+- **PR / commit:** [#18](https://github.com/filecoin-project/Solstice-Governance/pull/18), merge `6b68569b90b4d228de5c1bc1cdbe5ed109f50e10` (branch `review-fixes-fip0118`)
 - **Affected sections:** README, §2, §3, §4, templates, this log
 - **Status:** Accepted
 
