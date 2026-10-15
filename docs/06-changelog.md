@@ -28,22 +28,22 @@ Each entry should link: (a) the **community issue / discussion** that raised the
 | 2026-10-09 | Upgrade-runbook link; one Safe-replacement section (§2.5.3) for both tiers. | Repository (PR) | n/a | n/a | [#17](https://github.com/filecoin-project/Solstice-Governance/pull/17) `142926f3ff38ed10166725a95a1a73500c35af3a` | Accepted |
 | 2026 (pending) | Establishment of the Solstice program and this governance repository; deprecation of Filecoin Plus. | FIP + Network upgrade | [FIP-0118 discussion](https://github.com/filecoin-project/FIPs/discussions/1249) | [FIP-0118](https://github.com/filecoin-project/FIPs/blob/master/FIPS/fip-0118.md) | Initial repository | Draft |
 
-FIP-0118's own status is Accepted. Its TODO still lists activation parameters, governance participants, the initial Orchestrator, and the reference FPV implementation as unresolved, and the SRA state table still marks the multisig addresses and `ACTIVATION_EPOCH` as TODO. solstice `deployments.json` at `b9a63a87b5adee272c16d7e507cc9c127fb34f0f` carries candidate values, including mainnet `activationEpoch` 6470280. Those values do not amend the FIP. `TODO(owners):` a FIP change that fills that TODO, cross-linked here when it lands. The lowercase `solstice-governance` link in the FIP resolves on GitHub; the repository name is `Solstice-Governance`.
 
 ## 2026-10-14 — FIP-0118 procedure and quotation fixes
 
 - **Type:** Repository (PR)
-- **Summary:** Bring the operating procedures into line with FIP-0118 at `23b42964890590a49c9cbc6e19a7e9e361d1f8a0`. Policy 4 states back-cover and `REGISTRATION_CUTOFF`. The recomputation is published on the task-register issue before either Safe approves. `TODO(owners): confirm` that neither Safe signs a `CorrectVolume` that lacks that publication. A missed second signature is recorded as correction-blocked rather than treated as a cancel. `ReassignBinding` (including when `inherit = true`) and Orchestrator `CancelBinding` have procedures. Quotations that were not in the FIP are replaced or removed, including the claim that either Safe can cancel every discretionary change. The quarterly recomputation is an SRA duty every quarter, separate from exception audits. Task-register issues state the chain id, because the SRA and SWA proxies match on mainnet and calibnet. Admitted lists apply from the next quarter. The hostile-Safe path follows FIP §4.3 (SRA re-point by SWA write; SWA replacement by network upgrade), correcting the wording PR #17 had introduced. Owner decisions that this repository cannot make are marked `TODO(owners):`. A follow-up on the same branch restores the 7-day late-report response window as a repository step, classifies the `SWA_TIMELOCK` value only under FIP + network upgrade, and marks as `TODO(owners): confirm` the new Safe duties, the definition of binding fraud, any bytecode-hash check, objections outside the FIP's cancel grounds, and the hardwired-proxy question from PR #17.
+- **Summary:** Bring the operating procedures into line with FIP-0118 at `23b42964890590a49c9cbc6e19a7e9e361d1f8a0`. Policy 4 states back-cover and `REGISTRATION_CUTOFF`. The recomputation is published on the task-register issue before either Safe approves. A missed second signature is recorded as correction-blocked rather than treated as a cancel. `ReassignBinding` (including when `inherit = true`) and Orchestrator `CancelBinding` have procedures. Quotations that were not in the FIP are replaced or removed, including the claim that either Safe can cancel every discretionary change. The quarterly recomputation is an SRA duty every quarter, separate from exception audits. Task-register issues state the chain id, because the SRA and SWA proxies match on mainnet and calibnet. Admitted lists apply from the next quarter. The hostile-Safe path follows FIP §4.3 (SRA re-point by SWA write; SWA replacement by network upgrade), correcting the wording PR #17 had introduced.
+  
 - **Community issue / discussion:** No GitHub issue. Review dated 2026-10-14.
 - **FIP:** n/a. No FIP text is amended.
 - **PR / commit:** branch `review-fixes-fip0118`
 - **Affected sections:** README, §2, §3, §4, templates, this log
-- **Status:** Proposed
+- **Status:** Accepted
 
 ## 2026-10-09 — Upgrade runbook link and one Safe-replacement section (PR #17)
 
 - **Type:** Repository (PR)
-- **Summary:** README points at the solstice contract upgrade runbook. The per-tier cooperative `ReplaceOwner` sections are folded into §2.5.3 (veto every open task, then replace, record the new Safe, engineering follow-up in the owner-change FAQ). That pull request also said a hostile replacement of either contract needs a network upgrade because the proxies are hardwired. The 2026-10-14 entry restores the FIP §4.3 split and leaves the hardwired-proxy question as `TODO(owners):`.
+- **Summary:** README points at the solstice contract upgrade runbook. The per-tier cooperative `ReplaceOwner` sections are folded into §2.5.3 (veto every open task, then replace, record the new Safe, engineering follow-up in the owner-change FAQ). That pull request also said a hostile replacement of either contract needs a network upgrade because the proxies are hardwired. 
 - **Community issue / discussion:** n/a
 - **FIP:** n/a
 - **PR / commit:** [#17](https://github.com/filecoin-project/Solstice-Governance/pull/17), merge `142926f3ff38ed10166725a95a1a73500c35af3a`
@@ -77,7 +77,7 @@ The §2.3.1 actor-code step was absent from the procedure after this entry. The 
 
 ## 2026-09-22 — Align operational docs with FIP-0118
 
-Doc-only correction (Rod review §1): registry actions and cooperative `ReplaceOwner` bind without a hold; `POST_PERIOD` / `VERIFICATION_WINDOW` / `EPOCHS_PER_QUARTER` are FIP deployment-fixed; remove `FinalizeConversion`; clarify share-map no-op, filing-after-bind, pricing/gate parameter names, upgrade hold + `veto(taskId)`, SWA cancel paths, and Orchestrator identity vs payout wallet. No FIP or contract change.
+Doc-only correction (Rod review §1): registry actions and cooperative `ReplaceOwner` bind without a hold; `POST_PERIOD` / `VERIFICATION_WINDOW` are FIP deployment-fixed; remove `FinalizeConversion`; clarify share-map no-op, filing-after-bind, pricing/gate parameter names, upgrade hold + `veto(taskId)`, SWA cancel paths, and Orchestrator identity vs payout wallet. No FIP or contract change.
 
 ## 6.3 Entry template
 
