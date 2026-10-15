@@ -43,7 +43,7 @@ Each entry should link: (a) the **community issue / discussion** that raised the
 ## 2026-10-09 — Upgrade runbook link and one Safe-replacement section (PR #17)
 
 - **Type:** Repository (PR)
-- **Summary:** README points at the solstice contract upgrade runbook. The per-tier cooperative `ReplaceOwner` sections are folded into §2.5.3 (veto every open task, then replace, record the new Safe, engineering follow-up in the owner-change FAQ). That pull request also said a hostile replacement of either contract needs a network upgrade because the proxies are hardwired. 
+- **Summary:** README points at the solstice contract upgrade runbook. The per-tier cooperative `ReplaceOwner` sections are folded into §2.5.3 (veto every open task, then replace, record the new Safe, engineering follow-up in the owner-change FAQ). That pull request also said a hostile replacement of either contract needs a network upgrade because the proxies are hardwired. The 2026-10-14 entry restores the FIP §4.3 split; that claim from PR #17 does not describe the current procedure.
 - **Community issue / discussion:** n/a
 - **FIP:** n/a
 - **PR / commit:** [#17](https://github.com/filecoin-project/Solstice-Governance/pull/17), merge `142926f3ff38ed10166725a95a1a73500c35af3a`
