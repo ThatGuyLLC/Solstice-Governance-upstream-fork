@@ -24,13 +24,13 @@ Solstice governance is split across two contracts, each operated by a tier compo
 
 Governance is a bespoke UnanimousGovernance contract, not a nested Safe. Each entity's Safe handles co-signing. Where the FIP holds a change before it binds (every discretionary SWA write, and a code upgrade at either tier), the hold and the unilateral cancel are the contract's own logic. Nesting Safes solves co-signing, not objection. An SRA registry change has no post-approval hold and no cancel (§2.1.2). For SWA writes the hold is additionally enforced at f02 (`SWA_TIMELOCK`), so it survives a compromised or maliciously upgraded governance contract. How each owner is implemented internally (incl. a nested multisig) is the entity's operational discretion.
 
-A note on wording: FIP-0118 says "governance multisig"; this repository says "Safe". Both nomenclature refer to the same thing. The FIP identifies each governance multisig by its address and requires no particular wallet product — "no specific multisig implementation (e.g., Safe{Wallet}) is required" (FIP-0118 §4.2). This repository uses Safe because that is what the two tiers deploy, not because the FIP mandates it. Quotations of the FIP keep its wording.
+A note on wording: FIP-0118 says "governance multisig"; this repository says "Safe". Both terms refer to the same thing. The FIP identifies each governance multisig by its address and requires no particular wallet product — "no specific multisig implementation (e.g., Safe{Wallet}) is required" (FIP-0118 §4.2). This repository uses Safe because that is what the two tiers deploy, not because the FIP mandates it. Quotations of the FIP keep its wording.
 
 ### 2.1.1 Standards for a governance Safe multisig wallet (both tiers)
 
 - Repository disclosure, not a change to that rule: each organization states, in this repository, the entity that holds its Safe and whether that entity or a signer operates, invests in, or is otherwise affiliated with an Orchestrator. Both Safes of the tier must still approve on chain. This repository does not waive the two-Safe approval, and it does not set a recusal rule that could leave a Safe unable to sign.
 - The organization has a track record in Filecoin governance or engineering, and is independent of the other organization in the same tier.
-- Required, but not protocol-enforced: an internal threshold of at least 2, and hardware key custody.
+- Required by this repository, though not enforced by the protocol: an internal threshold of at least 2, and hardware key custody.
 - No registry address may participate in either governance tier, as a governance multisig or as a key holder within one (FIP-0118 §4.2). The FIP's rule is address-level.
 - Both Safes of the tier must still approve on chain. This repository does not waive the two-Safe approval, and it does not set a recusal rule that could leave a Safe unable to sign.
 - Internal member rotation is org-internal and immediate; it requires no governance action.
@@ -118,7 +118,7 @@ Standard flow above; the call is `SetWeightRecords`. Reducing a weight to zero i
 
 > **Requires:** both SWA Safes + accepted FIP · **Hold:** `SWA_TIMELOCK`, 7 days · **Enforced by:** f02 · **Cancel:** either SWA Safe
 
-Standard flow; the call is `RegisterStream(id, record, activation_epoch)`, or `RegisterStream(id, record, writer, shares, activation_epoch)` where the stream is registered with an initial distribution.. Step 2 also confirms the stream and recipient caps and that `activation_epoch ≥ current_epoch + SWA_TIMELOCK`.
+Standard flow; the call is `RegisterStream(id, record, activation_epoch)`, or `RegisterStream(id, record, writer, shares, activation_epoch)` where the stream is registered with an initial distribution. Step 2 also confirms the stream and recipient caps and that `activation_epoch ≥ current_epoch + SWA_TIMELOCK`.
 
 </details>
 
@@ -145,7 +145,7 @@ Standard flow; the call is `SetDistribution(id, writer)`. Can be used, for insta
 
 > **Requires:** both SWA Safes + accepted FIP · **Hold:** SWA-internal timelock, 7 days · **Enforced by:** SWA · **Cancel:** either SWA Safe
 
-1. Publish and get an accepted FIP for the new gate parameters (VOL_TARGET_ENTRY, the gate entry target, initially 3,500 USD; VOL_TARGET_RATIO, the per-step escalation, initially 2.7; and steps, the gate-step counter). There is no free "step size": the 5pp step is a contract constant, and steps indexes the escalation map directly.
+1. Publish and get an accepted FIP for the new gate parameters (`VOL_TARGET_ENTRY`, the gate entry target, initially 3,500 USD; `VOL_TARGET_RATIO`, the per-step escalation, initially 2.7; and `steps`, the gate-step counter). There is no free "step size": the 5pp step is a contract constant, and steps indexes the escalation map directly.
 2. Both SWA Safes approve `SetGateParams(params)`. A discretionary write that changes the w2 Weight record must go in the same governance action as the matching `steps` adjustment via `SetGateParams`. Per FIP-0118 §3.1.1, sequence the pair so that no `QuarterlyGateCheck` applies between the two effective epochs; the SWA enforces this only when the two holds overlap. Before approval, the issue records both effective epochs and the next `QuarterlyGateCheck` epoch, and states that no gate check falls between them.
 3. The change queues in the SWA's own state under the SWA-internal timelock (7 days). The gate rule itself is code and cannot change via a parameter write. Either Safe may cancel during the hold.
 4. If one half of a paired write is cancelled after the other has applied, w2 and `steps` stay mismatched until a new paired write. That re-send is authorized only by an accepted FIP. This repository does not pre-authorize it.
@@ -219,7 +219,7 @@ During every `SWA_TIMELOCK`, monitor the f02 queue and objections under [§2.2.8
 
 SRA Governance is **Tier 2**: it governs the Service Rewards Actor (SRA) — the orchestrator registry and the split within the service stream. FIP-0118 fixes its discretionary powers; registry changes require no per-change FIP except a code upgrade:
 
-SRA Governance's discretionary powers are fixed by FIP-0118 §4.2. They are: admit or remove an Orchestrator; replace an Orchestrator's payout wallet on its public request; cooperatively rotate a Registry multisig (`ReplaceOwner`); reassign contested (payer, operator) bindings; correct or supply posted volumes during the verification window (`CorrectVolume`); audit Orchestrators on an exception basis; maintain the admitted lists that scope FPV; set the FIL pricing parameters and REGISTRATION_CUTOFF via SetPricingParams (§2.3.7); and upgrade the SRA's code, the one registry change that requires a FIP.
+SRA Governance's discretionary powers are fixed by FIP-0118 §4.2. They are: admit or remove an Orchestrator; replace an Orchestrator's payout wallet on its public request; cooperatively rotate a Registry multisig (`ReplaceOwner`); reassign contested (payer, operator) bindings; correct or supply posted volumes during the verification window (`CorrectVolume`); audit Orchestrators on an exception basis; maintain the admitted lists that scope FPV; set the FIL pricing parameters and `REGISTRATION_CUTOFF` via `SetPricingParams` (§2.3.7); and upgrade the SRA's code, the one registry change that requires a FIP.
 
 Registry changes need both Registry Safes but need no per-change FIP (the one exception is a code upgrade). The quarterly verification runs against a public record and is deterministic.
 
@@ -341,7 +341,7 @@ Full procedure and evidence standards: [§4.4.2](04-quarterly-review-and-runbook
 
 > **Requires:** both SRA Safes · **Hold:** none · **Enforced by:** SRA · **Cancel:** not cancellable (either Safe may `veto(taskId)` only while half-approved) · **No FIP**
 
-Standard registry-change flow for the admitted-stablecoin whitelist, the admitted Filecoin Pay contract addresses, and the fee-auction pricing parameters, set by SetPricingParams(min_lot_floor, min_lot_alpha, price_band, registration_cutoff). All four arguments are supplied on every call, so a change to one restates the other three — the task-register issue must carry the full tuple, not the delta. These are gate-consequential. The calls bind at once when the second Safe approves: each emits an event and stores nothing, and neither is held or cancellable after that approval. Either Safe can `veto(taskId)` on a half-approved task before the second approval. Never a silent edit.
+Standard registry-change flow for the admitted-stablecoin whitelist, the admitted Filecoin Pay contract addresses, and the fee-auction pricing parameters, set by `SetPricingParams`(`min_lot_floor`, `min_lot_alpha`, `price_band`, `registration_cutoff`). All four arguments are supplied on every call, so a change to one restates the other three — the task-register issue must carry the full tuple, not the delta. These are gate-consequential. The calls bind at once when the second Safe approves: each emits an event and stores nothing, and neither is held or cancellable after that approval. Either Safe can `veto(taskId)` on a half-approved task before the second approval. Never a silent edit.
 
 Both the admitted lists and the pricing parameters, including `REGISTRATION_CUTOFF`, apply from the first epoch of the next quarter, not from the execution epoch (FIP-0118 §2.2 and §3.2). The latest event before a quarter's first epoch is the set in force for that quarter. An Orchestrator does not apply a list or parameter change mid-quarter. For `SetAdmittedLists`, sort each address array ascending before encoding so both Safes share one `taskId` (see task-register canonical calldata). The issue states the chain id.
 
@@ -523,7 +523,7 @@ The threat model rests on the two-Safes rule: no single Safe can make a discreti
 
 1. Nothing binds from one Safe alone. A hold (where one exists) starts only after both Safes approve. One Safe can only submit a task; the `Submitted` event carries the `taskId` (a hash), not the full content. The other Safe’s remedy is `veto(taskId)` on that half-approved or held task. Repeated resubmission is publicly visible; the attacker cannot bind a change silently. On the SWA side, a malicious discretionary write also lacks its required published FIP, making the objection case unambiguous.
 2. **Task register (off-chain).** Pending tasks never expire on-chain (`UnanimousGovernance`), and `Submitted` names only the `taskId` hash. Before the first on-chain approval of any governance action, open an issue in this repository that records the chain id, the exact calldata, and the expected `taskId` (= `keccak256(msg.data)`). Mainnet is chain id 314. Calibnet is chain id 314159. The same proxy address on both networks is not a check that the signer is on the intended network (§2.4.1). That issue is the human-readable register entry the hash alone cannot provide. **Canonical calldata:** both Safes copy the calldata from that issue verbatim. Address lists in the payload (e.g. `SetAdmittedLists`) are sorted ascending by address before encoding — the same list in a different order is a different `msg.data` and a different task that never reaches unanimity. The second Safe also records its pre-approval dry-run result on that issue (see the standard flows in §2.2 and §2.3). 
-3. The tier is treated as stood down, and the consequences are bounded: a stood-down registry tier means payments and SetShares continue; a stood-down SWA tier means discretionary changes stop while the ramp and the gate continue through the permissionless crank. This is an operational posture for the tier, not a status on an Orchestrator — there is no Orchestrator freeze in this program, and RemoveOrchestrator is the single sanction (§2.3.2).
+3. The tier is treated as stood down, and the consequences are bounded: a stood-down registry tier means payments and `SetShares` continue; a stood-down SWA tier means discretionary changes stop while the ramp and the gate continue through the permissionless crank. This is an operational posture for the tier, not a status on an Orchestrator — there is no Orchestrator freeze in this program, and `RemoveOrchestrator` is the single sanction (§2.3.2).
 4. Exit: replace the compromised Safe address. This requires both Safes, so if the compromised Safe obstructs, the FIP backstop applies (2.5.3).
 
 ### 2.5.3 Replacing a registered Safe
@@ -544,9 +544,9 @@ Applies to either tier; the mechanics are the same on the SRA and the SWA.
 
 ### 2.5.4 Both SWA Safes captured
 
- When both SWA Safes are captured, a hostile valid write stays queued for the full SWA_TIMELOCK. The backstop is an emergency network upgrade within that hold (FIP-0118, Security Considerations). This repository does not shorten that clock.
+When both SWA Safes are captured, a hostile valid write stays queued for the full SWA_TIMELOCK. The backstop is an emergency network upgrade within that hold (FIP-0118, Security Considerations). FIP-0118 does not provide a fast path short of a FIP. This repository does not shorten that clock.
  
- Simultaneous compromise of both tiers has no separate procedure in the FIP beyond that emergency upgrade and, if an honest SWA write is still possible, the SRA re-point in §2.5.3.
+Simultaneous compromise of both tiers has no separate procedure in the FIP beyond that emergency upgrade and, if an honest SWA write is still possible, the SRA re-point in §2.5.3.
 
 ---
 
