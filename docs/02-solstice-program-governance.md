@@ -28,6 +28,7 @@ A note on wording: FIP-0118 says "governance multisig"; this repository says "Sa
 
 ### 2.1.1 Standards for a governance Safe multisig wallet (both tiers)
 
+- Repository disclosure, not a change to that rule: each organization states, in this repository, the entity that holds its Safe and whether that entity or a signer operates, invests in, or is otherwise affiliated with an Orchestrator. Both Safes of the tier must still approve on chain. This repository does not waive the two-Safe approval, and it does not set a recusal rule that could leave a Safe unable to sign.
 - The organization has a track record in Filecoin governance or engineering, and is independent of the other organization in the same tier.
 - Required, but not protocol-enforced: an internal threshold of at least 2, and hardware key custody.
 - No registry address may participate in either governance tier, as a governance multisig or as a key holder within one (FIP-0118 §4.2). The FIP's rule is address-level.
