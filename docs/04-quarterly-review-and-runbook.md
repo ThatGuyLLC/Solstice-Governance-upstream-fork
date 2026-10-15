@@ -27,6 +27,13 @@ Per [§3.1, Policy 9](03-orchestrator-operational-guidelines.md#31-policies), th
 
 **If a report is late or incomplete,** SRA Governance opens a public issue and the Orchestrator has the standard response window (7 days) to remedy it before the removal trigger in [§4.4.3](#443-verification-and-removal) is considered. FIP-0118 makes failure to file a removal trigger and forfeits re-admission for the following quarter. The 7-day window is this repository's response step. A later return, if the Safes admit one, is a fresh `AddOrchestrator` with a fresh application, and it is not available in the forfeited quarter ([§2.3.2](02-solstice-program-governance.md#232--remove-an-orchestrator-removeorchestrator)).
 
+**Objecting to a filed report.** Anyone may object to a filed report by opening an issue in this repository, with the orchestrator, the quarter, the figure or statement disputed, and the evidence. There is no standing requirement. Timing decides the remedy:
+
+- **Inside the verification window**, a well-founded objection to a posted figure is an input to the quarterly recomputation and can still be corrected by `CorrectVolume` ([§2.3.4](02-solstice-program-governance.md#234--quarterly-fpv-verification--correction-correctvolume)).
+- **After the window closes**, bound values are final. The objection is then a verification trigger under [§4.4.4](#444-what-triggers-a-verification), and the remedy is audit or removal, with no clawback.
+
+An objection to a report's completeness or disclosures, rather than its figures, is not time-bound and is handled under the late-or-incomplete step above. SRA Governance responds within the standard window (7 days).
+
 ## 4.2 Quarterly report template
 
 > The report template and example below are repository content. Changing them is a Change-Log action: open an issue, propose the edit by pull request, and record it in the Change Log — not an ad-hoc edit.
@@ -38,12 +45,12 @@ The fillable template lives at [`quarterly-reports/_TEMPLATE.md`](quarterly-repo
 | # | Section | What it must carry |
 | :-- | :-- | :-- |
 | 1 | Orchestrator identification and rewards received | Orchestrator name, registered wallet address, quarter covered, date submitted, and the reference-indexer version used to produce the figures. |
-| 2 | Financial performance | The `FPV_i(Q)` headline; the admitted-stablecoin component (USD at face value); the per-pricing-period FIL conversion working (one row per qualifying print; the parameters in effect for Q; the FPV total in both atto-USD and human-readable USD with its `PostVolume` / `VolumeCorrected` transaction reference **or** `no message (zero quarter)` plus indexer evidence; booked revenue by customer segment; and pipeline and sales commentary. |
+| 2 | Financial performance | The `FPV_i(Q)` headline; the admitted-stablecoin component (USD at face value); the per-pricing-period FIL conversion working (one row per qualifying print); the parameters in effect for Q; the FPV total in both atto-USD and human-readable USD with its `PostVolume` / `VolumeCorrected` transaction reference **or** `no message (zero quarter)` plus indexer evidence; booked revenue by customer segment; and pipeline and sales commentary. |
 | 3 | Use of block rewards | Total block rewards received, on-chain disbursements from the Orchestrator wallet, data onboarded (active), storage providers engaged, and a spend-category breakdown. |
 | 4 | Retrospective | What worked, what didn't, key learnings, and any other context. |
 | 5 | Next quarter outlook | High-level plan and focus areas, and anticipated changes to strategy, spend, or team. |
 
-**Where the numbers come from.** Every field marked *(from indexer)* is produced by the versioned reference indexer rather than computated manually, so any observer re-running the same indexer version over the same public settlement events reaches the same result. Two constraints are hard: the FPV total **must match** the bound value for that quarter (cite the `PostVolume` message, or the `VolumeCorrected` event when a correction bound; for a zero quarter with no `PostVolume`, cite `no message (zero quarter)` and the indexer run), and the parameters block **must** print `MIN_LOT(Q)`, because it is derived off-chain and stored nowhere else.
+**Where the numbers come from.** Every field marked *(from indexer)* is produced by the versioned reference indexer rather than computed manually, so any observer re-running the same indexer version over the same public settlement events reaches the same result. Two constraints are hard: the FPV total **must match** the bound value for that quarter (cite the `PostVolume` message, or the `VolumeCorrected` event when a correction bound; for a zero quarter with no `PostVolume`, cite `no message (zero quarter)` and the indexer run), and the parameters block **must** print `MIN_LOT(Q)`, because it is derived off-chain and stored nowhere else.
 
 **This is disclosure, not scoring.** The report records what happened and how the figures were derived. No field in it is a target or a pass/fail threshold; the only mechanical test in the program is the volume gate fixed by FIP-0118.
 
@@ -194,7 +201,7 @@ The evidence for a relationship is the list in [§4.4.2](#442-dispute-resolution
 
 - A public-data anomaly surfaced by the quarterly FPV recomputation or by monitoring (volume spikes at quarter or gate boundaries, figures that clear the target by a hair, volume with no matching storage activity). These phrases are review triggers, not automatic findings, and they have no numeric cutoff in this repository. 
 - A community report filed as an issue in this repository.
-- A contested binding escalated from the dispute process; in-window objections can still produce a CorrectVolume; after binding, values are final and the remedy is audit or removal; 7-day response window.
+- A contested binding escalated from the dispute process.
 - A "correction blocked" note under [§2.3.4](02-solstice-program-governance.md#234--quarterly-fpv-verification--correction-correctvolume), if the owners confirm that it is a trigger.
 
 ### 4.4.5 Escalation
@@ -209,8 +216,7 @@ The evidence for a relationship is the list in [§4.4.2](#442-dispute-resolution
 - **Reproducibility:** every verification conclusion must be reproducible from public data via the versioned reference indexer; findings cite the events and blocks used.
 - **Sanctions cadence:** re-screen registered addresses on a fixed cadence and at each admission, not only on trigger. 
 - **Conflict attestations:** collect a conflict-of-interest / no-common-control attestation from the Orchestrator at admission and on any binding change, and the Safe-organization affiliation disclosure in [§2.1.1](02-solstice-program-governance.md#211-standards-for-a-governance-safe-both-tiers). The FIP's separation rule remains address-level. 
-- **Recovery contact:** the declaration names a recovery contact distinct from the identity key ([Policy 6](03-orchestrator-operational-guidelines.md#31-policies)). 
-- `ReplaceWallet` still requires the public request in [§2.3.3](02-solstice-program-governance.md#233--replace--rotate-an-orchestrator-address-replacewallet).
+- **Recovery contact:** the declaration names a recovery contact distinct from the identity key ([Policy 6](03-orchestrator-operational-guidelines.md#31-policies)).`ReplaceWallet` still requires the public request in [§2.3.3](02-solstice-program-governance.md#233--replace--rotate-an-orchestrator-address-replacewallet).
 - **Verification trail:** triggers, evidence, decisions, and on-chain actions are all logged in this repository.
 
 ---
