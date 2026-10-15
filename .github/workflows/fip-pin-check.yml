@@ -1,5 +1,6 @@
 # Compares FIP-0118 on FIPs master with the quotation pin.
 # A difference fails this check. The workflow does not open an issue or a pull request.
+# This workflow should not be a required check. A failure signals that the pin and master differ. It does not block other pulls.
 # TODO(owners): name an owner for this check.
 name: fip-pin-check
 
@@ -15,6 +16,7 @@ permissions:
 jobs:
   diff:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Diff FIP-0118 against the quotation pin
         run: |

@@ -225,7 +225,7 @@ The w1 ramp and the quarterly gate step (`QuarterlyGateCheck` → `StepWeightRec
 
 1. Confirm the queued w2 write matches the gate rule and the bound `AggregatedFPV(Q)`.
 2. Note it is a scheduled write: it queues 7 days for visibility only and is not cancellable.
-3. Record the crank (chain id, quarter, transaction) on the quarter's issue. Repository deadline, not a FIP deadline: crank within 24 hours of the epoch the call becomes available. `TODO(owners):` name a primary and a backup cranker. This repository does not name them.
+3. Record the crank (chain id, quarter, transaction) on the quarter's issue. Proposed repository deadline, not a FIP deadline, and not in force. `TODO(owners): approve` cranking within 24 hours of the epoch the call becomes available. `TODO(owners):` name a primary and a backup cranker. This repository does not name them.
 4. If a mismatch suggests compromise, escalate per §2.5, Safety and rotation playbook; the remedy will be a Safe/code replacement, not cancelling the mechanism write.
 
 </details>
@@ -357,7 +357,7 @@ FIP-0118 fixes the binding behavior:
 <details>
 <summary><strong>2.3.5 — Dispute resolution for contested bindings</strong></summary>
 
-1. The contesting party opens an issue identifying the pair and its claim, and the chain id. A dispute that asks for a `CorrectVolume` in the open verification window is filed by day 4 of that window. The written reason is recorded with the outcome. `TODO(owners):` an independent appeal reviewer. This repository does not name one.
+1. The contesting party opens an issue identifying the pair and its claim, and the chain id. Proposed repository deadline, not a FIP deadline, and not in force. `TODO(owners): approve` filing a dispute that asks for a `CorrectVolume` in the open verification window by day 4 of that window. The written reason is recorded with the outcome. `TODO(owners):` an independent appeal reviewer. This repository does not name one.
 2. SRA Governance requests evidence from both parties (increasing strength: business records; client confirmation via a verifiable channel; a signed payer-wallet attestation naming the orchestrator).
 3. Decide the outcome and record a written reason on the issue. A reassignment executes via [§2.3.11](#2311--reassign-a-binding-reassignbinding). A removal executes via §2.3.2. Neither is a `CorrectVolume` (§2.3.4).
 4. Record the resolution in the issue.
@@ -388,7 +388,7 @@ Standard registry-change flow for the admitted-stablecoin whitelist, the admitte
 
 Both the admitted lists and the pricing parameters, including `REGISTRATION_CUTOFF`, apply from the first epoch of the next quarter, not from the execution epoch (FIP-0118 §2.2 and §3.2). The latest event before a quarter's first epoch is the set in force for that quarter. An Orchestrator does not apply a list or parameter change mid-quarter. For `SetAdmittedLists`, sort each address array ascending before encoding so both Safes share one `taskId` (see task-register canonical calldata). The issue states the chain id.
 
-Repository rule for `SetPricingParams`. Publish the full tuple and a written rationale on the issue at least 14 days before the first approval. `TODO(owners):` the allowed ranges for `MIN_LOT_FLOOR`, `MIN_LOT_ALPHA`, `PRICE_BAND`, and `REGISTRATION_CUTOFF`. This repository does not set numeric ranges.
+Proposed repository rule for `SetPricingParams`, not a FIP requirement, and not in force. `TODO(owners): approve` publishing the full tuple and a written rationale on the issue at least 14 days before the first approval. `TODO(owners):` the allowed ranges for `MIN_LOT_FLOOR`, `MIN_LOT_ALPHA`, `PRICE_BAND`, and `REGISTRATION_CUTOFF`. This repository does not set numeric ranges.
 
 </details>
 
@@ -406,7 +406,7 @@ The one registry change that requires a FIP (e.g., the Phase 2 permissionless-ad
 
 `SubmitShares()` runs permissionlessly and is not held (FPV is posted already USD-denominated; there is no separate on-chain conversion pass). Any party may crank it. Nothing on chain schedules it. A late crank delays the new share map; during the delay the previous map stands, and after a removal the removed share keeps burning until the new map is installed (FIP-0118 §2.2 and §3.2). The `RemoveOrchestrator` guard stays up until `SubmitShares` has run.
 
-Duty: confirm `SubmitShares` has run and wrote the correct wallet-to-share map (integrity rests on the upstream verification window). It is not cancellable. Record the crank (chain id, quarter, transaction) on the quarter's issue. Repository deadline, not a FIP deadline: crank within 24 hours of the epoch the call becomes available. `TODO(owners):` name a primary and a backup cranker. This repository does not name them. 
+Duty: confirm `SubmitShares` has run and wrote the correct wallet-to-share map (integrity rests on the upstream verification window). It is not cancellable. Record the crank (chain id, quarter, transaction) on the quarter's issue. Proposed repository deadline, not a FIP deadline, and not in force. `TODO(owners): approve` cranking within 24 hours of the epoch the call becomes available. `TODO(owners):` name a primary and a backup cranker. This repository does not name them. 
 
 </details>
 

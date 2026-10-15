@@ -16,10 +16,10 @@ No person is named in this list.
 | F04 | `TODO(owners):` | Indexer owner, backup maintainer, and ship date. Publication decision for settlement data and dashboards. |
 | F05 | `TODO(owners): approve` | 48 hours between publication of a recomputation and the first `CorrectVolume` approval. Not in force. Not a FIP requirement. |
 | F06 | `TODO(owners): confirm` | A "correction blocked" note is a verification trigger without a further confirmation, and day 5 of the verification window is a hard internal deadline with a public notice if the second signature has not landed. Until confirmed, day 5 is an aim and the note is not by itself a removal ground. |
-| F09 | `TODO(owners):` | An independent appeal reviewer. The day-4 filing deadline for an in-window `CorrectVolume` dispute is repository procedure. The reviewer is not named. |
+| F09 | `TODO(owners): approve` | Filing a dispute that asks for an in-window `CorrectVolume` by day 4 of that window. Not in force. Not a FIP deadline. `TODO(owners):` an independent appeal reviewer. The reviewer is not named. |
 | F10 | `TODO(owners):` | Publish the admission rubric and a decision deadline before the first application is decided. |
 | F11 | `TODO(owners):` | The number of consecutive quarters in Policy 7, or delete that policy. Inactivity is not a removal ground until then. Whether "binding fraud" is a ground distinct from misreported FPV and wrongful claims. It is not defined. |
-| F14 | `TODO(owners):` | Name a primary and a backup cranker for `SubmitShares` and `QuarterlyGateCheck`. The 24-hour text is a repository deadline. The names are blank. |
+| F14 | `TODO(owners): approve` | Cranking `SubmitShares` and `QuarterlyGateCheck` within 24 hours of the epoch the call becomes available. Not in force. Not a FIP deadline. `TODO(owners):` name a primary and a backup cranker. The names are blank. |
 | F16 | `TODO(owners):` | Whether proxy addresses hardwired in Lotus, Forest, and Venus change the SRA path in FIP-0118 §4.3. |
 | F17 | `TODO(owners):` | Emergency-annex contacts, alert channel, pre-drafted emergency FIP, and a tabletop. None are named. |
 | F18 | `TODO(owners): confirm` | A cancellation, and a decision not to cancel, is recorded with a written reason. The contract does not require the reason. |
@@ -32,7 +32,8 @@ No person is named in this list.
 | F36 | `TODO(owners):` | Indicative numeric values for anomaly phrases, used only as triggers. None are set. |
 | F41 | `TODO(owners):` | Launch-seat removal criteria, and whether to aim for a second Orchestrator before the end of Q2. Criteria are not set. |
 | F42 | `TODO(owners):` | Transaction hashes for the pre-activation `SetAdmittedLists` and `SetPricingParams` events, mainnet and calibnet. |
-| F45 | `TODO(owners):` | Allowed ranges for `MIN_LOT_FLOOR`, `MIN_LOT_ALPHA`, `PRICE_BAND`, and `REGISTRATION_CUTOFF`. No range is set. The 14-day notice and written rationale are repository procedure. |
+| F44 | `TODO(owners): approve` | Objection cut-off at day 4 of the verification window for a figure, and a limit of one quarter on a completeness or disclosure objection. Not in force. Inline flag: [§4.1](04-quarterly-review-and-runbook.md#41-community-reporting-and-disclosure). |
+| F45 | `TODO(owners): approve` | Publishing the full `SetPricingParams` tuple and a written rationale at least 14 days before the first approval. Not in force. Not a FIP requirement. `TODO(owners):` the allowed ranges for `MIN_LOT_FLOOR`, `MIN_LOT_ALPHA`, `PRICE_BAND`, and `REGISTRATION_CUTOFF`. No range is set. |
 | F46 | `TODO(owners): approve` | Quarterly `getOwners` / `getThreshold` snapshot. Not in force. |
 | F47 | `TODO(owners): confirm` | A `ReplaceWallet` request carries a message signed by `orch` (EIP-1271 when `orch` is a contract) naming the old wallet, the new wallet, and the chain id. |
 | F48 | `TODO(owners):` | Hashing tool and pinning provider for a report CID. Who opens the reporting issue and who merges the report pull request. |

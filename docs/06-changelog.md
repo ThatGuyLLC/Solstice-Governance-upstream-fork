@@ -34,7 +34,7 @@ Each entry should link: (a) the **community issue / discussion** that raised the
 ## 2026-10-15 — Round-3 review fixes (proposed)
 
 - **Type:** Repository (PR)
-- **Summary:** Applies the concrete repository edits from the 2026-10-15 governance review. New duties are proposed text with `TODO(owners): approve` or `TODO(owners): confirm`. They are not rules in force. Wash trading and self-dealing, and a materially false or misleading report, are repository policy (the second is proposed). They are not stated as FIP requirements. No contract code and no deployment is changed. Branch protection, FIP amendments, and legal conclusions are not in this change.
+- **Summary:** Applies the concrete repository edits from the 2026-10-15 governance review. New duties are proposed text with `TODO(owners): approve` or `TODO(owners): confirm`. They are not rules in force. That includes the day-4 in-window dispute filing deadline, the 24-hour crank deadline, and the 14-day notice with a written rationale before `SetPricingParams`. Each is labeled as not a FIP deadline. Wash trading and self-dealing, and a materially false or misleading report, are repository policy (the second is proposed). They are not stated as FIP requirements. No contract code and no deployment is changed. Branch protection, FIP amendments, and legal conclusions are not in this change.
 - **Community issue / discussion:** No GitHub issue. Review dated 2026-10-15.
 - **FIP:** n/a. No FIP text is amended.
 - **PR / commit:** branch `review-r3-fixes`. A pull request was not opened with this branch.

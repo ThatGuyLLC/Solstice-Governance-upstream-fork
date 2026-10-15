@@ -178,7 +178,7 @@ FIP-0118 fixes the consequence of a misreport discovered after binding:
 2. SRA Governance requests evidence of the client relationship from both parties. Acceptable evidence, in increasing strength: business records showing the engagement; client confirmation through a verifiable channel; a signed client attestation (a message signed by the payer wallet naming the orchestrator).
 3. Resolution target timeline: 7 days. The outcome (reassignment, removal, or no action) is recorded on the issue with a written reason. A reassignment uses [§2.3.11](02-solstice-program-governance.md#2311--reassign-a-binding-reassignbinding), including when `inherit = true` applies. A removal uses [§2.3.2](02-solstice-program-governance.md#232--remove-an-orchestrator-removeorchestrator). The call executes on-chain when the second SRA Safe approves. Registry actions are not held and not cancellable after that approval.
 
-A dispute that asks for a `CorrectVolume` in the open verification window is filed by day 4 of that window. `TODO(owners):` an independent appeal reviewer. This repository does not name one.
+Proposed repository deadline, not a FIP deadline, and not in force. `TODO(owners): approve` filing a dispute that asks for a `CorrectVolume` in the open verification window by day 4 of that window. `TODO(owners):` an independent appeal reviewer. This repository does not name one.
 
 Proposed, not in force. `TODO(owners): confirm` the 14-day trigger. A dispute filed in the last 14 days of a quarter would be decided, and any `ReassignBinding` sent, before `Start(Q+1)`. This track is repository procedure. If it is missed, FIP-0118 lines 3122–3124 at the pin state the consequence:
 
